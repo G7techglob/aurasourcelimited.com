@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Collections | AURA SOURCE LIMITED</title>
+  <meta name="description" content="Explore the AURA SOURCE collections of perfumes, home fragrances and liquid care products.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="collections.css">
+  <script src="collections.js" defer></script>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" aria-label="Aura Source home">
+        <span>AURA</span>
+        <small>SOURCE</small>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle"
+        aria-label="Open navigation" aria-expanded="false"
+        aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="collections.html" class="active" aria-current="page">Collections</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-shade"></div>
+      <div class="container hero-content">
+        <span class="eyebrow">THE WORLD OF AURA SOURCE</span>
+        <h1>Find your <em>signature.</em></h1>
+        <p>
+          Discover collections inspired by fragrance, freshness
+          and the art of everyday living.
+        </p>
+        <a href="#collections" class="btn btn-light">Explore Collections</a>
+      </div>
+      <span class="hero-number">01 / AURA SOURCE</span>
+    </section>
+
+    <!-- INTRODUCTION -->
+    <section class="introduction section">
+      <div class="container intro-grid">
+        <div>
+          <span class="eyebrow">CURATED FOR YOU</span>
+          <h2>Everyday essentials.<br><em>Distinctive experiences.</em></h2>
+        </div>
+        <div class="intro-copy">
+          <p>
+            Every space has a feeling. Every person has a signature.
+            Our collections bring together fragrance and everyday care
+            to help you create experiences that feel uniquely yours.
+          </p>
+          <p>
+            Explore our growing range of personal fragrances,
+            home freshening solutions and liquid care essentials.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLLECTIONS -->
+    <section class="collections-section section" id="collections">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">DISCOVER YOUR COLLECTION</span>
+            <h2>Explore the edit.</h2>
+          </div>
+
+          <div class="filters" role="group" aria-label="Filter collections">
+            <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter-btn" data-filter="perfume" aria-pressed="false">Perfumes</button>
+            <button class="filter-btn" data-filter="home" aria-pressed="false">Home Fragrance</button>
+            <button class="filter-btn" data-filter="care" aria-pressed="false">Liquid Care</button>
+          </div>
+        </div>
+
+        <div class="collections-grid">
+
+          <!-- SIGNATURE PERFUMES -->
+          <article class="collection-card" data-category="perfume">
+            <a href="products.html" class="collection-visual visual-perfume"
+               aria-label="Explore signature perfume products">
+              <span class="visual-index">01</span>
+              <span class="visual-caption">PERSONAL FRAGRANCE</span>
+              <div class="perfume-art" aria-hidden="true">
+                <div class="perfume-cap"></div>
+                <div class="perfume-neck"></div>
+                <div class="perfume-bottle">
+                  <span>AURA</span>
+                  <small>SOURCE</small>
+                </div>
+              </div>
+              <span class="visual-arrow" aria-hidden="true">↗</span>
+            </a>
+            <div class="collection-info">
+              <div>
+                <span class="category-label">THE PERSONAL EDIT</span>
+                <h3>Signature Perfumes</h3>
+              </div>
+              <p>
+                Explore scents that express individuality,
+                confidence and personal style.
+              </p>
+              <a class="text-link" href="products.html">Discover perfumes <span>→</span></a>
+            </div>
+          </article>
+
+          <!-- HOME FRAGRANCE -->
+          <article class="collection-card" data-category="home">
+            <a href="products.html" class="collection-visual visual-home"
+               aria-label="Explore home fragrance products">
+              <span class="visual-index">02</span>
+              <span class="visual-caption">SCENT YOUR SPACE</span>
+              <div class="home-art" aria-hidden="true">
+                <div class="home-bottle">
+                  <div class="spray-head"></div>
+                  <div class="home-bottle-label">
+                    <span>AURA</span>
+                    <small>HOME</small>
+                  </div>
+                </div>
+                <div class="decorative-orb"></div>
+              </div>
+              <span class="visual-arrow" aria-hidden="true">↗</span>
+            </a>
+            <div class="collection-info">
+              <div>
+                <span class="category-label">THE LIVING SPACE EDIT</span>
+                <h3>Home Fragrance</h3>
+              </div>
+              <p>
+                Bring a fresh, welcoming atmosphere to your
+                home, office and everyday spaces.
+              </p>
+              <a class="text-link" href="products.html">Explore home fragrance <span>→</span></a>
+            </div>
+          </article>
+
+          <!-- LIQUID CARE -->
+          <article class="collection-card" data-category="care">
+            <a href="products.html" class="collection-visual visual-care"
+               aria-label="Explore liquid care products">
+              <span class="visual-index">03</span>
+              <span class="visual-caption">EVERYDAY ESSENTIALS</span>
+              <div class="care-art" aria-hidden="true">
+                <div class="care-pump"></div>
+                <div class="care-neck"></div>
+                <div class="care-bottle">
+                  <span>AURA</span>
+                  <small>LIQUID CARE</small>
+                </div>
+              </div>
+              <span class="visual-arrow" aria-hidden="true">↗</span>
+            </a>
+            <div class="collection-info">
+              <div>
+                <span class="category-label">THE DAILY CARE EDIT</span>
+                <h3>Liquid Care</h3>
+              </div>
+              <p>
+                Discover practical liquid soap and everyday
+                care essentials for your surroundings.
+              </p>
+              <a class="text-link" href="products.html">Explore liquid care <span>→</span></a>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="filter-empty" id="filterEmpty" hidden>
+          No collections found in this category.
+        </p>
+      </div>
+    </section>
+
+    <!-- BRAND STATEMENT -->
+    <section class="brand-statement section">
+      <div class="container statement-inner">
+        <span class="eyebrow">THE AURA SOURCE PHILOSOPHY</span>
+        <h2>It's more than a scent.<br><em>It's how a moment feels.</em></h2>
+        <p>
+          We believe the little details make everyday life memorable.
+          Our ambition is to create products that bring fragrance,
+          freshness and thoughtful care into your world.
+        </p>
+      </div>
+      <span class="statement-decoration" aria-hidden="true">A</span>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container cta-inner">
+        <div>
+          <span class="eyebrow">YOUR NEXT FAVOURITE STARTS HERE</span>
+          <h2>Discover your<br><em>AURA.</em></h2>
+        </div>
+        <div class="cta-copy">
+          <p>
+            Ready to explore our products or enquire about an order?
+            We would love to hear from you.
+          </p>
+          <a href="products.html" class="btn btn-dark">View All Products</a>
+          <a href="contact.html" class="text-link cta-contact">Get in touch <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo footer-logo">
+          <span>AURA</span>
+          <small>SOURCE</small>
+        </a>
+        <p>Fragrance, freshness and everyday care.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="products.html">Products</a>
+        <a href="collections.html">Collections</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>Collections</h4>
+        <a href="products.html">Perfumes</a>
+        <a href="products.html">Home Fragrance</a>
+        <a href="products.html">Liquid Care</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>Connect</h4>
+        <a href="contact.html">Contact Us</a>
+        <a href="mailto:hello@aurasource.com">Email Us</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> AURA SOURCE LIMITED. All rights reserved.</p>
+      <p>Nigeria</p>
+    </div>
+  </footer>
+
+</body>
+</html>
