@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Products | AURA SOURCE LIMITED</title>
+  <meta
+    name="description"
+    content="Explore perfumes, air fresheners and liquid care products from AURA SOURCE LIMITED."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="products.css" />
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-container">
+
+      <a href="index.html" class="logo">
+        <span>AURA</span>
+        <small>SOURCE</small>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="products.html" class="active">Products</a>
+        <a href="collections.html">Collections</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container hero-content">
+      <span class="eyebrow">AURA SOURCE</span>
+
+      <h1>
+        Products designed<br />
+        <em>to leave an impression.</em>
+      </h1>
+
+      <p>
+        Discover our growing collection of fragrances, freshening solutions
+        and liquid care products created for everyday living.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- INTRO -->
+  <section class="products-intro section">
+    <div class="container intro-grid">
+
+      <div>
+        <span class="eyebrow">OUR PRODUCTS</span>
+        <h2>
+          Fragrance, freshness<br />
+          <em>and everyday care.</em>
+        </h2>
+      </div>
+
+      <div class="intro-text">
+        <p>
+          At AURA SOURCE LIMITED, we believe the products around you should
+          do more than serve a purpose. They should create an atmosphere,
+          communicate personality and make everyday moments feel better.
+        </p>
+
+        <p>
+          Our product range brings together carefully developed fragrances,
+          air fresheners and liquid care solutions for homes, businesses
+          and personal use.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FILTER -->
+  <section class="product-section">
+    <div class="container">
+
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">THE COLLECTION</span>
+          <h2>Explore our range.</h2>
+        </div>
+
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">
+            All
+          </button>
+
+          <button class="filter-btn" data-filter="perfume">
+            Perfumes
+          </button>
+
+          <button class="filter-btn" data-filter="air-freshener">
+            Air Fresheners
+          </button>
+
+          <button class="filter-btn" data-filter="liquid-care">
+            Liquid Care
+          </button>
+        </div>
+      </div>
+
+
+      <!-- PRODUCTS GRID -->
+      <div class="products-grid" id="productsGrid">
+
+        <!-- PRODUCT 1 -->
+        <article class="product-card" data-category="perfume">
+
+          <div class="product-image perfume-bg">
+            <span class="product-label">SIGNATURE</span>
+
+            <div class="bottle">
+              <div class="bottle-cap"></div>
+              <div class="bottle-body">
+                <span>AURA</span>
+                <small>SOURCE</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-info">
+            <span class="product-category">Perfume</span>
+            <h3>Signature Aura</h3>
+
+            <p>
+              A refined fragrance created for confidence,
+              elegance and everyday sophistication.
+            </p>
+
+            <div class="product-bottom">
+              <span class="price">₦25,000</span>
+              <a href="contact.html" class="product-link">
+                Enquire <span>→</span>
+              </a>
+            </div>
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 2 -->
+        <article class="product-card" data-category="perfume">
+
+          <div class="product-image perfume-bg-two">
+            <span class="product-label">PREMIUM</span>
+
+            <div class="bottle bottle-dark">
+              <div class="bottle-cap"></div>
+              <div class="bottle-body">
+                <span>AURA</span>
+                <small>SOURCE</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-info">
+            <span class="product-category">Perfume</span>
+            <h3>Velvet Essence</h3>
+
+            <p>
+              A warm and captivating scent with a smooth,
+              luxurious character.
+            </p>
+
+            <div class="product-bottom">
+              <span class="price">₦30,000</span>
+              <a href="contact.html" class="product-link">
+                Enquire <span>→</span>
+              </a>
+            </div>
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 3 -->
+        <article class="product-card" data-category="air-freshener">
+
+          <div class="product-image fresh-bg">
+            <span class="product-label">HOME</span>
+
+            <div class="spray-bottle">
+              <div class="spray-top"></div>
+              <div class="spray-body">
+                <span>AURA</span>
+                <small>HOME</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-info">
+            <span class="product-category">Air Freshener</span>
+            <h3>Fresh Aura</h3>
+
+            <p>
+              Bring a clean, refreshing atmosphere into
+              your living and working spaces.
+            </p>
+
+            <div class="product-bottom">
+              <span class="price">₦8,500</span>
+              <a href="contact.html" class="product-link">
+                Enquire <span>→</span>
+              </a>
+            </div>
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 4 -->
+        <article class="product-card" data-category="air-freshener">
+
+          <div class="product-image fresh-bg-two">
+            <span class="product-label">ROOM</span>
+
+            <div class="spray-bottle dark-spray">
+              <div class="spray-top"></div>
+              <div class="spray-body">
+                <span>AURA</span>
+                <small>SOURCE</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-info">
+            <span class="product-category">Air Freshener</span>
+            <h3>Luxury Mist</h3>
+
+            <p>
+              A sophisticated room fragrance designed to
+              refresh your space and elevate its atmosphere.
+            </p>
+
+            <div class="product-bottom">
+              <span class="price">₦10,000</span>
+              <a href="contact.html" class="product-link">
+                Enquire <span>→</span>
+              </a>
+            </div>
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 5 -->
+        <article class="product-card" data-category="liquid-care">
+
+          <div class="product-image soap-bg">
+
+            <span class="product-label">CARE</span>
+
+            <div class="soap-bottle">
+              <div class="soap-pump"></div>
+
+              <div class="soap-body">
+                <span>AURA</span>
+                <small>LIQUID CARE</small>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="product-info">
+            <span class="product-category">Liquid Care</span>
+            <h3>Pure Liquid Soap</h3>
+
+            <p>
+              A practical everyday liquid soap designed
+              for freshness, cleanliness and comfort.
+            </p>
+
+            <div class="product-bottom">
+              <span class="price">₦5,500</span>
+              <a href="contact.html" class="product-link">
+                Enquire <span>→</span>
+              </a>
+            </div>
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 6 -->
+        <article class="product-card" data-category="liquid-care">
+
+          <div class="product-image soap-bg-two">
+
+            <span class="product-label">EVERYDAY</span>
+
+            <div class="soap-bottle">
+              <div class="soap-pump"></div>
+
+              <div class="soap-body">
+                <span>AURA</span>
+                <small>SOURCE</small>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="product-info">
+            <span class="product-category">Liquid Care</span>
+            <h3>Everyday Clean</h3>
+
+            <p>
+              Simple, effective liquid care for homes,
+              offices and everyday environments.
+            </p>
+
+            <div class="product-bottom">
+              <span class="price">₦6,500</span>
+              <a href="contact.html" class="product-link">
+                Enquire <span>→</span>
+              </a>
+            </div>
+          </div>
+
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- QUALITY SECTION -->
+  <section class="quality-section section">
+
+    <div class="container quality-grid">
+
+      <div class="quality-content">
+        <span class="eyebrow">THE AURA SOURCE STANDARD</span>
+
+        <h2>
+          Made with intention.<br />
+          <em>Created for everyday life.</em>
+        </h2>
+
+        <p>
+          Every AURA SOURCE product is developed around three simple ideas:
+          quality, experience and consistency.
+        </p>
+
+        <p>
+          As our collection grows, we remain committed to creating products
+          that people can enjoy, trust and make part of their daily routines.
+        </p>
+
+        <a href="about.html" class="btn btn-dark">
+          Discover Our Story
+        </a>
+      </div>
+
+
+      <div class="quality-features">
+
+        <div class="quality-feature">
+          <span>01</span>
+          <div>
+            <h3>Quality</h3>
+            <p>
+              We aim for dependable products and consistent experiences.
+            </p>
+          </div>
+        </div>
+
+        <div class="quality-feature">
+          <span>02</span>
+          <div>
+            <h3>Craft</h3>
+            <p>
+              Every product begins with attention to fragrance,
+              presentation and usability.
+            </p>
+          </div>
+        </div>
+
+        <div class="quality-feature">
+          <span>03</span>
+          <div>
+            <h3>Innovation</h3>
+            <p>
+              We continue developing new fragrances and everyday
+              care solutions.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+  <section class="product-cta">
+
+    <div class="container">
+
+      <span class="eyebrow">FIND YOUR AURA</span>
+
+      <h2>
+        Your space.<br />
+        <em>Your signature.</em>
+      </h2>
+
+      <p>
+        Have a question about a product or want to place an order?
+        Get in touch with AURA SOURCE.
+      </p>
+
+      <a href="contact.html" class="btn btn-light">
+        Contact AURA SOURCE
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+
+    <div class="container footer-grid">
+
+      <div class="footer-brand">
+        <a href="index.html" class="logo footer-logo">
+          <span>AURA</span>
+          <small>SOURCE</small>
+        </a>
+
+        <p>
+          Fragrance, freshness and everyday care,
+          thoughtfully created in Nigeria.
+        </p>
+      </div>
+
+
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <a href="about.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="collections.html">Collections</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+
+      <div class="footer-links">
+        <h4>Products</h4>
+        <a href="products.html">Perfumes</a>
+        <a href="products.html">Air Fresheners</a>
+        <a href="products.html">Liquid Care</a>
+      </div>
+
+
+      <div class="footer-contact">
+        <h4>Connect</h4>
+        <a href="mailto:hello@aurasource.com">
+          hello@aurasource.com
+        </a>
+
+        <a href="#">
+          Instagram
+        </a>
+
+        <a href="#">
+          WhatsApp
+        </a>
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom container">
+      <p>
+        © <span id="year"></span> AURA SOURCE LIMITED.
+        All rights reserved.
+      </p>
+
+      <p>
+        Nigeria
+      </p>
+    </div>
+
+  </footer>
+
+
+  <script src="products.js"></script>
+
+</body>
+</html>
