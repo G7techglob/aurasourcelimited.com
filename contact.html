@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Contact Us | AURA SOURCE LIMITED</title>
+  <meta name="description" content="Contact AURA SOURCE LIMITED for perfume, air freshener and liquid care product enquiries and orders.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="contact.css">
+  <script src="contact.js" defer></script>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" aria-label="Aura Source home">
+        <span>AURA</span>
+        <small>SOURCE</small>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle"
+        aria-label="Open navigation" aria-expanded="false"
+        aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="collections.html">Collections</a>
+        <a href="contact.html" class="active" aria-current="page">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="contact-hero">
+      <div class="container hero-content">
+        <span class="eyebrow">WE WOULD LOVE TO HEAR FROM YOU</span>
+        <h1>Let's start a<br><em>conversation.</em></h1>
+        <p>
+          Have a product enquiry, want to place an order,
+          or interested in working with us? Get in touch.
+        </p>
+      </div>
+      <span class="hero-mark" aria-hidden="true">A</span>
+    </section>
+
+    <!-- CONTACT DETAILS + FORM -->
+    <section class="contact-section section">
+      <div class="container contact-grid">
+
+        <!-- CONTACT INFORMATION -->
+        <aside class="contact-information">
+          <span class="eyebrow">GET IN TOUCH</span>
+          <h2>We're here<br>to help.</h2>
+
+          <p class="information-intro">
+            Reach out to AURA SOURCE LIMITED for product
+            information, orders, wholesale enquiries or partnerships.
+          </p>
+
+          <div class="contact-detail">
+            <span class="detail-number">01</span>
+            <div>
+              <h3>Email</h3>
+              <a href="mailto:hello@aurasource.com">
+                hello@aurasource.com
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <span class="detail-number">02</span>
+            <div>
+              <h3>WhatsApp</h3>
+              <p>Message us about products and orders.</p>
+              <a href="#" class="whatsapp-link" id="whatsappLink"
+                target="_blank" rel="noopener noreferrer">
+                Chat on WhatsApp →
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <span class="detail-number">03</span>
+            <div>
+              <h3>Business enquiries</h3>
+              <p>
+                For wholesale, distribution and business
+                collaboration enquiries, send us a message.
+              </p>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <span class="social-heading">FOLLOW OUR JOURNEY</span>
+            <a href="#" id="instagramLink"
+              target="_blank" rel="noopener noreferrer">
+              Instagram ↗
+            </a>
+          </div>
+        </aside>
+
+        <!-- CONTACT FORM -->
+        <div class="contact-form-wrap">
+          <span class="eyebrow">SEND US A MESSAGE</span>
+          <h2>How can we assist you?</h2>
+          <p class="form-intro">
+            Fill in the details below. Your message will open in
+            WhatsApp so you can review and send it to our team.
+          </p>
+
+          <form id="contactForm">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fullName">Full name *</label>
+                <input type="text" id="fullName" name="fullName"
+                  placeholder="Your full name" autocomplete="name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email address *</label>
+                <input type="email" id="email" name="email"
+                  placeholder="you@example.com" autocomplete="email" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone number</label>
+              <input type="tel" id="phone" name="phone"
+                placeholder="+234..." autocomplete="tel">
+            </div>
+
+            <div class="form-group">
+              <label for="subject">What is your enquiry about? *</label>
+              <select id="subject" name="subject" required>
+                <option value="">Select an enquiry</option>
+                <option value="Perfume enquiry">Perfumes</option>
+                <option value="Air freshener enquiry">Air fresheners</option>
+                <option value="Liquid soap enquiry">Liquid soap and liquid care</option>
+                <option value="Order enquiry">Placing an order</option>
+                <option value="Wholesale enquiry">Wholesale and distribution</option>
+                <option value="Partnership enquiry">Business partnership</option>
+                <option value="Other enquiry">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Your message *</label>
+              <textarea id="message" name="message" rows="5"
+                placeholder="Tell us how we can help..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-dark submit-btn">
+              Continue to WhatsApp <span>→</span>
+            </button>
+
+            <p class="form-note">
+              Your message is prepared for WhatsApp. It is not sent
+              until you review and send it in WhatsApp.
+            </p>
+
+            <p class="form-status" id="formStatus"
+              role="status" aria-live="polite"></p>
+
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BRAND MESSAGE -->
+    <section class="contact-banner">
+      <div class="container banner-inner">
+        <span class="eyebrow">AURA SOURCE LIMITED</span>
+        <h2>Fragrance. Freshness.<br><em>Thoughtful care.</em></h2>
+        <p>
+          Thank you for your interest in our brand.
+          We look forward to connecting with you.
+        </p>
+        <a href="products.html" class="btn btn-light">Explore Our Products</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+
+      <div class="footer-brand">
+        <a href="index.html" class="logo footer-logo">
+          <span>AURA</span>
+          <small>SOURCE</small>
+        </a>
+        <p>Fragrance, freshness and everyday care.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="products.html">Products</a>
+        <a href="collections.html">Collections</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>Products</h4>
+        <a href="products.html">Perfumes</a>
+        <a href="products.html">Air Fresheners</a>
+        <a href="products.html">Liquid Care</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <a href="mailto:hello@aurasource.com">Email Us</a>
+        <a href="#" id="footerWhatsApp">WhatsApp</a>
+        <a href="#" id="footerInstagram">Instagram</a>
+      </div>
+
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> AURA SOURCE LIMITED. All rights reserved.</p>
+      <p>Nigeria</p>
+    </div>
+  </footer>
+
+</body>
+</html>
