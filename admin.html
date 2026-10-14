@@ -204,8 +204,56 @@
       securely through Supabase.
     </p>
   </main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-  <!-- Supabase authentication will be connected in our next step. -->
+<script>
+  const SUPABASE_URL = "https://xmojdravrfrztusukjpg.supabase.co";
+  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_5qOMDwlNKI2E9F8vKSLT2Q_VdCyyWBE";
+
+  const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+  const loginForm = document.getElementById("loginForm");
+  const loginButton = document.getElementById("loginButton");
+  const message = document.getElementById("message");
+
+  loginForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    message.textContent = "";
+    loginButton.disabled = true;
+    loginButton.textContent = "SIGNING IN...";
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    try {
+      const { data, error } = await supabaseClient.auth.signInWithPassword({
+        email,
+        password
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      if (data.session) {
+        message.style.color = "#267344";
+        message.textContent = "Login successful. Your session is active.";
+      }
+    } catch (error) {
+      message.style.color = "#9b3028";
+      message.textContent =
+        error.message || "Unable to sign in. Please try again.";
+    } finally {
+      loginButton.disabled = false;
+      loginButton.textContent = "SIGN IN";
+    }
+  });
+</script>
+
 </body>
 </html>
 ```
