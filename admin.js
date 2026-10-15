@@ -2,7 +2,7 @@
 const SUPABASE_URL = "https://xmojdravrfrztusukjpg.supabase.co";
 
 // Use the same public publishable key from your existing admin.html.
-const SUPABASE_PUBLISHABLE_KEY = "PASTE_YOUR_EXISTING_PUBLISHABLE_KEY_HERE";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_5qOMDwlNKI2E9F8vKSLT2Q_VdCyyWBE";
 
 const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
