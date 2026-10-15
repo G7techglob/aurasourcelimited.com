@@ -4,7 +4,7 @@ const SUPABASE_URL =
 
 // Replace this placeholder with your existing public key.
 const SUPABASE_PUBLISHABLE_KEY =
-  "PASTE_YOUR_EXISTING_PUBLISHABLE_KEY_HERE";
+  "sb_publishable_5qOMDwlNKI2E9F8vKSLT2Q_VdCyyWBE";
 
 const accountStatus = document.getElementById("accountStatus");
 const message = document.getElementById("message");
