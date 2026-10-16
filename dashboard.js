@@ -47,11 +47,12 @@ async function startDashboard() {
   accountStatus.textContent =
     "Signed in as " + data.session.user.email;
 
-  const { data: products, error: productError } = await client
-    .from("products")
-    .select("id, name, description, price, image_url, is_published")
-    .eq("is_published", true)
-    .order("created_at", { ascending: false });
+ 
+const { data: products, error: productError } = await client
+  .from("products")
+  .select("id, name, price, image_url, is_published, created_at")
+  .eq("is_published", true)
+  .order("created_at", { ascending: false });
 
   if (productError) {
     console.error("Product loading error:", productError);
