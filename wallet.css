@@ -1,0 +1,224 @@
+
+:root {
+  --black: #171612;
+  --cream: #f8f4ec;
+  --gold: #b99555;
+  --white: #ffffff;
+  --muted: #77736b;
+  --border: #e7dfd0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--black);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+.wallet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 7%;
+  background: var(--black);
+}
+
+.brand {
+  color: var(--white);
+  text-decoration: none;
+  font-family: Georgia, serif;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.brand span {
+  color: var(--gold);
+}
+
+.back-link {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.back-link:hover,
+.back-button:hover {
+  opacity: 0.8;
+}
+
+.wallet-container {
+  width: min(900px, 92%);
+  margin: 40px auto;
+}
+
+.wallet-intro {
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+h1,
+h2 {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.wallet-intro h1 {
+  margin: 8px 0;
+  font-size: clamp(30px, 5vw, 44px);
+}
+
+.wallet-intro > p:last-child {
+  color: var(--muted);
+}
+
+.balance-card {
+  padding: 30px;
+  margin-bottom: 24px;
+  border-radius: 14px;
+  background: var(--black);
+  color: var(--white);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.balance-card > p:first-child {
+  margin-top: 0;
+  color: #ded5c4;
+}
+
+.balance-card h2 {
+  margin: 8px 0;
+  color: var(--gold);
+  font-size: clamp(30px, 5vw, 42px);
+  overflow-wrap: anywhere;
+}
+
+.balance-note {
+  margin-bottom: 0;
+  color: #d1ccc2;
+  font-size: 13px;
+}
+
+.wallet-panel {
+  padding: 26px;
+  margin-bottom: 24px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.wallet-panel h2 {
+  margin-top: 0;
+}
+
+.wallet-panel > p {
+  color: var(--muted);
+}
+
+#withdrawalForm {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+#withdrawalForm label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#withdrawalAmount {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #d4ccbe;
+  border-radius: 7px;
+  background: var(--white);
+  color: var(--black);
+  font-size: 16px;
+}
+
+#withdrawalAmount:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+#withdrawalButton {
+  padding: 14px 18px;
+  border: none;
+  border-radius: 7px;
+  background: var(--gold);
+  color: var(--black);
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#withdrawalButton:hover {
+  background: #a58347;
+}
+
+#withdrawalButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+#withdrawalMessage {
+  font-size: 14px;
+}
+
+.security-note {
+  padding: 12px;
+  border-left: 3px solid var(--gold);
+  background: var(--cream);
+  font-size: 13px;
+}
+
+.back-button {
+  display: inline-block;
+  margin: 8px 0 24px;
+  padding: 12px 18px;
+  border-radius: 7px;
+  background: var(--black);
+  color: var(--white);
+  text-decoration: none;
+}
+
+footer {
+  padding: 24px 12px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 520px) {
+  .wallet-header {
+    padding: 16px 5%;
+  }
+
+  .brand {
+    font-size: 16px;
+  }
+
+  .back-link {
+    font-size: 12px;
+  }
+
+  .wallet-container {
+    margin-top: 25px;
+  }
+
+  .balance-card,
+  .wallet-panel {
+    padding: 20px;
+  }
+}
