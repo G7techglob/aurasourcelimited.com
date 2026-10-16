@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Aura Source | Wallet</title>
+  <link rel="stylesheet" href="wallet.css">
+</head>
+<body>
+  <header class="wallet-header">
+    <a href="dashboard.html" class="brand">AURA <span>SOURCE</span></a>
+    <a href="dashboard.html" class="back-link">Admin Dashboard</a>
+  </header>
+
+  <main class="wallet-container">
+    <section class="wallet-intro">
+      <p class="eyebrow">ADMINISTRATION</p>
+      <h1>Aura Source Wallet</h1>
+      <p>Review your wallet records and manage manual withdrawal requests.</p>
+    </section>
+
+    <section class="balance-card">
+      <p>Available balance</p>
+      <h2 id="walletBalance">Not connected yet</h2>
+      <p class="balance-note">
+        Your real available balance will appear after secure payment
+        and wallet accounting are connected.
+      </p>
+    </section>
+
+    <section class="wallet-panel">
+      <h2>Withdraw to bank</h2>
+      <p>Submit a withdrawal request for review.</p>
+
+      <form id="withdrawalForm">
+        <label for="withdrawalAmount">Amount (NGN)</label>
+        <input
+          id="withdrawalAmount"
+          name="amount"
+          type="number"
+          min="1"
+          step="0.01"
+          placeholder="Enter amount"
+          required
+        >
+
+        <button id="withdrawalButton" type="submit">
+          Submit withdrawal request
+        </button>
+      </form>
+
+      <p id="withdrawalMessage" role="status" aria-live="polite"></p>
+
+      <p class="security-note">
+        This page is not yet connected to real funds. No money will be
+        transferred by this form until the secure backend is implemented.
+      </p>
+    </section>
+
+    <section class="wallet-panel">
+      <h2>Withdrawal history</h2>
+      <p id="historyMessage">Withdrawal history is not connected yet.</p>
+      <div id="withdrawalList"></div>
+    </section>
+
+    <a href="dashboard.html" class="back-button">Return to dashboard</a>
+  </main>
+
+  <footer>Aura Source · Private administration</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="wallet.js"></script>
+</body>
+</html>
