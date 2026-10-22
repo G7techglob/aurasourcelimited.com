@@ -2,14 +2,14 @@
 "use strict";
 
 /*
- * AURA SOURCE WALLET
+ * AURA SOURCE BUSINESS WALLET
  *
- * FRONTEND DEMONSTRATION ONLY.
+ * TEST MODE ONLY.
+ * Deposits and withdrawals are simulated in this browser.
+ * No real money is received, stored, or transferred.
  *
- * Real deposits, bank transfers and withdrawals must be processed
- * by authenticated Supabase Edge Functions and a payment provider.
- *
- * Never put a payment provider secret key in this file.
+ * Real financial records must eventually come from a secure
+ * Supabase backend and verified payment-provider transactions.
  */
 
 const STORAGE_KEY = "auraSourceWalletDemoRequests";
@@ -17,7 +17,6 @@ const STORAGE_KEY = "auraSourceWalletDemoRequests";
 const walletBalance = document.getElementById("walletBalance");
 const totalDeposits = document.getElementById("totalDeposits");
 const totalWithdrawals = document.getElementById("totalWithdrawals");
-const pendingCount = document.getElementById("pendingCount");
 const transactionList = document.getElementById("transactionList");
 const transactionFilter = document.getElementById("transactionFilter");
 
@@ -40,6 +39,8 @@ function formatMoney(amount) {
 }
 
 function showMessage(element, message, type = "") {
+    if (!element) return;
+
     element.textContent = message;
     element.className = "form-message";
 
@@ -51,34 +52,27 @@ function showMessage(element, message, type = "") {
 function getDemoRequests() {
     try {
         const stored = localStorage.getItem(STORAGE_KEY);
-
-        if (!stored) {
-            return [];
-        }
+        if (!stored) return [];
 
         const requests = JSON.parse(stored);
-
-        if (!Array.isArray(requests)) {
-            return [];
-        }
+        if (!Array.isArray(requests)) return [];
 
         return requests.filter(item =>
             item &&
             typeof item.id === "string" &&
             ["deposit", "withdrawal"].includes(item.type) &&
-            Number.isFinite(item.amount) &&
+            Number.isSafeInteger(item.amount) &&
             item.amount > 0 &&
             typeof item.date === "string"
         );
     } catch (error) {
-        console.error("Could not read demo transactions:", error);
+        console.error("Could not read test records:", error);
         return [];
     }
 }
 
 function saveDemoRequest(request) {
     const requests = getDemoRequests();
-
     requests.unshift(request);
 
     try {
@@ -86,16 +80,15 @@ function saveDemoRequest(request) {
             STORAGE_KEY,
             JSON.stringify(requests.slice(0, 100))
         );
-
         return true;
     } catch (error) {
-        console.error("Could not save demo request:", error);
+        console.error("Could not save test record:", error);
         return false;
     }
 }
 
 function createReference() {
-    return "AS-" +
+    return "AS-TEST-" +
         Date.now().toString(36).toUpperCase() +
         "-" +
         Math.random().toString(36).slice(2, 7).toUpperCase();
@@ -107,34 +100,60 @@ function createDemoRequest(type, amount, description) {
         type,
         amount,
         description,
-        status: "Demo only",
+        status: "TEST ONLY",
         date: new Date().toISOString()
     };
 }
 
+/* =========================================
+   CALCULATE TEST BALANCE
+========================================= */
+
 function renderWallet() {
     const requests = getDemoRequests();
 
-    /*
-     * The real balance deliberately remains zero.
-     * Demo requests are not proof of payment and cannot add funds.
-     */
-    walletBalance.textContent = formatMoney(0);
+    const deposits = requests
+        .filter(request => request.type === "deposit")
+        .reduce((sum, request) => sum + request.amount, 0);
 
-    totalDeposits.textContent = formatMoney(0);
-    totalWithdrawals.textContent = formatMoney(0);
+    const withdrawals = requests
+        .filter(request => request.type === "withdrawal")
+        .reduce((sum, request) => sum + request.amount, 0);
 
-    pendingCount.textContent = String(requests.length);
+    const balance = deposits - withdrawals;
+
+    if (walletBalance) {
+        walletBalance.textContent =
+            "TEST ONLY — " + formatMoney(balance);
+    }
+
+    if (totalDeposits) {
+        totalDeposits.textContent =
+            "TEST ONLY — " + formatMoney(deposits);
+    }
+
+    if (totalWithdrawals) {
+        totalWithdrawals.textContent =
+            "TEST ONLY — " + formatMoney(withdrawals);
+    }
 
     renderTransactions(requests);
 }
 
-function renderTransactions(requests) {
-    const filter = transactionFilter.value;
+/* =========================================
+   TRANSACTION HISTORY
+========================================= */
 
-    const filtered = requests.filter(request => {
-        return filter === "all" || request.type === filter;
-    });
+function renderTransactions(requests) {
+    if (!transactionList) return;
+
+    const filter = transactionFilter
+        ? transactionFilter.value
+        : "all";
+
+    const filtered = requests.filter(request =>
+        filter === "all" || request.type === filter
+    );
 
     transactionList.replaceChildren();
 
@@ -144,11 +163,10 @@ function renderTransactions(requests) {
 
         cell.colSpan = 5;
         cell.className = "empty-state";
-        cell.textContent = "No transactions to display.";
+        cell.textContent = "No test transactions to display.";
 
         row.appendChild(cell);
         transactionList.appendChild(row);
-
         return;
     }
 
@@ -157,7 +175,9 @@ function renderTransactions(requests) {
 
         const typeCell = document.createElement("td");
         typeCell.textContent =
-            request.type === "deposit" ? "Deposit request" : "Withdrawal request";
+            request.type === "deposit"
+                ? "Test deposit"
+                : "Test withdrawal";
 
         const referenceCell = document.createElement("td");
         referenceCell.textContent = request.id;
@@ -166,18 +186,17 @@ function renderTransactions(requests) {
         amountCell.textContent = formatMoney(request.amount);
 
         const statusCell = document.createElement("td");
-        const statusBadge = document.createElement("span");
-
-        statusBadge.className = "status";
-        statusBadge.textContent = request.status;
-        statusCell.appendChild(statusBadge);
+        const badge = document.createElement("span");
+        badge.className = "status";
+        badge.textContent = "TEST ONLY";
+        statusCell.appendChild(badge);
 
         const dateCell = document.createElement("td");
-        const parsedDate = new Date(request.date);
+        const date = new Date(request.date);
 
-        dateCell.textContent = Number.isNaN(parsedDate.getTime())
+        dateCell.textContent = Number.isNaN(date.getTime())
             ? "Unknown"
-            : parsedDate.toLocaleString("en-NG", {
+            : date.toLocaleString("en-NG", {
                 dateStyle: "medium",
                 timeStyle: "short"
             });
@@ -194,9 +213,10 @@ function renderTransactions(requests) {
     });
 }
 
-/*
- * Jump to deposit or withdrawal sections.
- */
+/* =========================================
+   PAGE NAVIGATION
+========================================= */
+
 document.querySelectorAll("[data-open]").forEach(button => {
     button.addEventListener("click", () => {
         const target = document.getElementById(button.dataset.open);
@@ -210,181 +230,201 @@ document.querySelectorAll("[data-open]").forEach(button => {
     });
 });
 
-/*
- * Quick deposit amount buttons.
- */
+/* =========================================
+   QUICK DEPOSIT AMOUNTS
+========================================= */
+
 document.querySelectorAll("[data-amount]").forEach(button => {
     button.addEventListener("click", () => {
-        document.getElementById("depositAmount").value =
-            button.dataset.amount;
+        const input = document.getElementById("depositAmount");
+
+        if (input) {
+            input.value = button.dataset.amount;
+        }
     });
 });
 
-/*
- * Deposit request.
- *
- * This does not charge a card, initiate a bank transfer,
- * or credit the wallet. It only records a demo request.
- */
-depositForm.addEventListener("submit", event => {
-    event.preventDefault();
+/* =========================================
+   SIMULATED DEPOSIT
+========================================= */
 
-    const amount = Number(
-        document.getElementById("depositAmount").value
-    );
+if (depositForm) {
+    depositForm.addEventListener("submit", event => {
+        event.preventDefault();
 
-    const method = document.getElementById("depositMethod").value;
+        const amountInput = document.getElementById("depositAmount");
+        const amount = Number(amountInput?.value);
 
-    if (!Number.isSafeInteger(amount) || amount < 100) {
+        if (!Number.isSafeInteger(amount) || amount < 100) {
+            showMessage(
+                depositMessage,
+                "Enter a test deposit of at least ₦100.",
+                "error"
+            );
+            return;
+        }
+
+        if (amount > 10000000) {
+            showMessage(
+                depositMessage,
+                "The test deposit limit is ₦10,000,000.",
+                "error"
+            );
+            return;
+        }
+
+        const request = createDemoRequest(
+            "deposit",
+            amount,
+            "Simulated test deposit"
+        );
+
+        if (!saveDemoRequest(request)) {
+            showMessage(
+                depositMessage,
+                "Could not save the test deposit in this browser.",
+                "error"
+            );
+            return;
+        }
+
         showMessage(
             depositMessage,
-            "Enter a valid deposit amount of at least ₦100.",
-            "error"
+            "TEST DEPOSIT SUCCESSFUL: " + formatMoney(amount) +
+            " has been added to the simulated balance. No real money was received.",
+            "success"
         );
-        return;
-    }
 
-    if (amount > 10000000) {
-        showMessage(
-            depositMessage,
-            "The demo limit is ₦10,000,000 per request.",
-            "error"
+        depositForm.reset();
+        renderWallet();
+    });
+}
+
+/* =========================================
+   SIMULATED WITHDRAWAL
+========================================= */
+
+if (withdrawForm) {
+    withdrawForm.addEventListener("submit", event => {
+        event.preventDefault();
+
+        const amount = Number(
+            document.getElementById("withdrawAmount")?.value
         );
-        return;
-    }
 
-    const request = createDemoRequest(
-        "deposit",
-        amount,
-        method
-    );
+        const bank = document.getElementById("bankName")?.value;
+        const accountName = document
+            .getElementById("accountName")?.value.trim();
+        const accountNumber = document
+            .getElementById("accountNumber")?.value.trim();
 
-    if (!saveDemoRequest(request)) {
-        showMessage(
-            depositMessage,
-            "Could not save the demo request in this browser.",
-            "error"
+        if (!Number.isSafeInteger(amount) || amount < 100) {
+            showMessage(
+                withdrawMessage,
+                "Enter a test withdrawal of at least ₦100.",
+                "error"
+            );
+            return;
+        }
+
+        if (
+            !bank ||
+            !accountName ||
+            !/^\d{10}$/.test(accountNumber || "")
+        ) {
+            showMessage(
+                withdrawMessage,
+                "Enter the bank, account holder name and a valid 10-digit account number.",
+                "error"
+            );
+            return;
+        }
+
+        const requests = getDemoRequests();
+
+        const deposits = requests
+            .filter(request => request.type === "deposit")
+            .reduce((sum, request) => sum + request.amount, 0);
+
+        const withdrawals = requests
+            .filter(request => request.type === "withdrawal")
+            .reduce((sum, request) => sum + request.amount, 0);
+
+        const balance = deposits - withdrawals;
+
+        if (amount > balance) {
+            showMessage(
+                withdrawMessage,
+                "Insufficient test balance. Your simulated balance is " +
+                formatMoney(Math.max(0, balance)) + ".",
+                "error"
+            );
+            return;
+        }
+
+        const confirmed = window.confirm(
+            "TEST ONLY: Record a simulated withdrawal of " +
+            formatMoney(amount) +
+            "? No money will be transferred."
         );
-        return;
-    }
 
-    showMessage(
-        depositMessage,
-        "Demo request recorded. No payment was taken and your balance has not changed. A payment provider must be connected to continue.",
-        "success"
-    );
+        if (!confirmed) return;
 
-    depositForm.reset();
-    renderWallet();
-});
-
-/*
- * Withdrawal request.
- *
- * Bank account details are validated but never saved.
- * No payout is initiated by this frontend.
- */
-withdrawForm.addEventListener("submit", event => {
-    event.preventDefault();
-
-    const amount = Number(
-        document.getElementById("withdrawAmount").value
-    );
-
-    const bank = document.getElementById("bankName").value;
-
-    const accountName = document.getElementById("accountName")
-        .value.trim();
-
-    const accountNumber = document.getElementById("accountNumber")
-        .value.trim();
-
-    if (!Number.isSafeInteger(amount) || amount < 100) {
-        showMessage(
-            withdrawMessage,
-            "Enter a valid withdrawal amount of at least ₦100.",
-            "error"
+        const request = createDemoRequest(
+            "withdrawal",
+            amount,
+            "Simulated test withdrawal"
         );
-        return;
-    }
 
-    if (amount > 10000000) {
-        showMessage(
-            withdrawMessage,
-            "The demo limit is ₦10,000,000 per request.",
-            "error"
-        );
-        return;
-    }
+        if (!saveDemoRequest(request)) {
+            showMessage(
+                withdrawMessage,
+                "Could not save the test withdrawal in this browser.",
+                "error"
+            );
+            return;
+        }
 
-    if (!bank || !accountName || !/^\d{10}$/.test(accountNumber)) {
-        showMessage(
-            withdrawMessage,
-            "Enter the bank, account holder name and a valid 10-digit account number.",
-            "error"
-        );
-        return;
-    }
-
-    const confirmed = window.confirm(
-        "This is a demonstration only. No bank payout will occur. Record a demo withdrawal request?"
-    );
-
-    if (!confirmed) {
-        return;
-    }
-
-    const request = createDemoRequest(
-        "withdrawal",
-        amount,
-        "Bank withdrawal request"
-    );
-
-    if (!saveDemoRequest(request)) {
         showMessage(
             withdrawMessage,
-            "Could not save the demo request in this browser.",
+            "TEST WITHDRAWAL RECORDED: " + formatMoney(amount) +
+            " deducted from the simulated balance. No bank transfer occurred.",
+            "success"
+        );
+
+        withdrawForm.reset();
+        renderWallet();
+    });
+}
+
+/* =========================================
+   BANK TRANSFER SETUP
+========================================= */
+
+const refreshAccountButton = document.getElementById("refreshAccount");
+
+if (refreshAccountButton) {
+    refreshAccountButton.addEventListener("click", () => {
+        showMessage(
+            receiveMessage,
+            "Bank-transfer receiving details are not connected. No real account has been created.",
             "error"
         );
-        return;
-    }
+    });
+}
 
-    showMessage(
-        withdrawMessage,
-        "Demo request recorded only. No money was sent and no balance was deducted. Secure withdrawal processing is not connected yet.",
-        "success"
-    );
+/* =========================================
+   TRANSACTION FILTER
+========================================= */
 
-    /*
-     * Clear the form to avoid leaving bank details on screen.
-     * The account number and account holder name are not stored.
-     */
-    withdrawForm.reset();
+if (transactionFilter) {
+    transactionFilter.addEventListener("change", () => {
+        renderTransactions(getDemoRequests());
+    });
+}
 
-    renderWallet();
-});
+/* =========================================
+   INITIAL DISPLAY
+========================================= */
 
-/*
- * Incoming bank transfer setup.
- *
- * Real account details must come from a verified backend response.
- */
-document.getElementById("refreshAccount").addEventListener("click", () => {
-    showMessage(
-        receiveMessage,
-        "No bank account provider is connected yet. No transfer account is available. We will connect this section after the backend is configured.",
-        "error"
-    );
-});
-
-/*
- * Filter transaction history.
- */
-transactionFilter.addEventListener("change", () => {
-    renderTransactions(getDemoRequests());
-});
-
-/*
- * Initial display.
- */
 renderWallet();
