@@ -264,7 +264,7 @@ if (depositForm) {
             return;
         }
 
-        if (amount > 10000000) {
+        if (amount > 100000000000) {
             showMessage(
                 depositMessage,
                 "The test deposit limit is ₦100,000,000,000,000.",
