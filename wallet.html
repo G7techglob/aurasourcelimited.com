@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#11140f">
+
+    <title>Aura Source Wallet</title>
+    <meta name="description" content="Manage your Aura Source wallet, deposits, bank transfers and withdrawals.">
+
+    <link rel="stylesheet" href="wallet.css">
+    <script src="wallet.js" defer></script>
+</head>
+<body>
+
+<header class="topbar">
+    <a class="brand" href="index.html">
+        <span class="brand-mark">A</span>
+        <span>AURA <strong>SOURCE</strong><small>WALLET</small></span>
+    </a>
+
+    <a href="index.html" class="back-link">← Back to store</a>
+</header>
+
+<main class="container">
+
+    <section class="welcome">
+        <div>
+            <p class="eyebrow">YOUR MONEY, ORGANIZED</p>
+            <h1>My Wallet</h1>
+            <p class="muted">Manage your balance and bank transactions.</p>
+        </div>
+        <span class="currency-badge">NGN ₦</span>
+    </section>
+
+    <div class="demo-notice" role="status">
+        <strong>Setup mode</strong>
+        <span>Payments are not connected yet. This page cannot move real money.</span>
+    </div>
+
+    <section class="balance-card">
+        <div class="balance-top">
+            <span>Available balance</span>
+            <span class="balance-status">● Wallet overview</span>
+        </div>
+
+        <h2 id="walletBalance">₦0.00</h2>
+        <p class="balance-note">Nigerian Naira · NGN</p>
+
+        <div class="balance-actions">
+            <button class="btn btn-light" data-open="depositSection">
+                ↓ Deposit
+            </button>
+            <button class="btn btn-outline" data-open="withdrawSection">
+                ↑ Withdraw
+            </button>
+        </div>
+
+        <div class="wallet-footer">
+            <span>AURA SOURCE</span>
+            <span>SECURE WALLET</span>
+        </div>
+    </section>
+
+    <section class="stats-grid">
+        <article class="stat-card">
+            <span class="stat-icon">↓</span>
+            <p>Total deposits</p>
+            <h3 id="totalDeposits">₦0.00</h3>
+        </article>
+
+        <article class="stat-card">
+            <span class="stat-icon">↑</span>
+            <p>Total withdrawals</p>
+            <h3 id="totalWithdrawals">₦0.00</h3>
+        </article>
+
+        <article class="stat-card">
+            <span class="stat-icon">↔</span>
+            <p>Pending requests</p>
+            <h3 id="pendingCount">0</h3>
+        </article>
+    </section>
+
+    <section class="content-grid">
+
+        <div class="main-column">
+
+            <section class="panel" id="depositSection">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">ADD FUNDS</p>
+                        <h2>Deposit money</h2>
+                    </div>
+                    <span class="panel-icon">↓</span>
+                </div>
+
+                <p class="muted">
+                    Choose an amount to prepare a deposit request.
+                    Your balance will change only after verified payment.
+                </p>
+
+                <form id="depositForm">
+                    <label for="depositAmount">Amount (₦)</label>
+                    <input
+                        id="depositAmount"
+                        type="number"
+                        min="100"
+                        max="10000000"
+                        step="1"
+                        placeholder="e.g. 5000"
+                        required
+                    >
+
+                    <div class="quick-amounts">
+                        <button type="button" data-amount="1000">₦1,000</button>
+                        <button type="button" data-amount="5000">₦5,000</button>
+                        <button type="button" data-amount="10000">₦10,000</button>
+                    </div>
+
+                    <label for="depositMethod">Payment method</label>
+                    <select id="depositMethod" required>
+                        <option value="bank_transfer">Bank transfer</option>
+                        <option value="card">Debit or credit card</option>
+                    </select>
+
+                    <button class="btn btn-primary btn-full" type="submit">
+                        Prepare deposit request
+                    </button>
+                </form>
+
+                <p class="form-message" id="depositMessage" aria-live="polite"></p>
+            </section>
+
+            <section class="panel" id="withdrawSection">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">SEND FUNDS</p>
+                        <h2>Withdraw money</h2>
+                    </div>
+                    <span class="panel-icon">↑</span>
+                </div>
+
+                <p class="muted">
+                    Submit a withdrawal request to your bank account.
+                    Actual withdrawals require a connected backend.
+                </p>
+
+                <form id="withdrawForm">
+                    <label for="withdrawAmount">Amount (₦)</label>
+                    <input
+                        id="withdrawAmount"
+                        type="number"
+                        min="100"
+                        max="10000000"
+                        step="1"
+                        placeholder="e.g. 2000"
+                        required
+                    >
+
+                    <label for="bankName">Bank</label>
+                    <select id="bankName" required>
+                        <option value="">Select your bank</option>
+                        <option>Access Bank</option>
+                        <option>Access Bank (Diamond)</option>
+                        <option>Citibank Nigeria</option>
+                        <option>Ecobank Nigeria</option>
+                        <option>Fidelity Bank</option>
+                        <option>First Bank of Nigeria</option>
+                        <option>First City Monument Bank</option>
+                        <option>Globus Bank</option>
+                        <option>Guaranty Trust Bank</option>
+                        <option>Jaiz Bank</option>
+                        <option>Keystone Bank</option>
+                        <option>Moniepoint MFB</option>
+                        <option>Opay</option>
+                        <option>Palmpay</option>
+                        <option>Polaris Bank</option>
+                        <option>PremiumTrust Bank</option>
+                        <option>Providus Bank</option>
+                        <option>Stanbic IBTC Bank</option>
+                        <option>Standard Chartered Bank</option>
+                        <option>Sterling Bank</option>
+                        <option>SunTrust Bank</option>
+                        <option>TAJBank</option>
+                        <option>Union Bank</option>
+                        <option>United Bank for Africa (UBA)</option>
+                        <option>Unity Bank</option>
+                        <option>Wema Bank</option>
+                        <option>Zenith Bank</option>
+                        <option>Other Nigerian bank</option>
+                    </select>
+
+                    <label for="accountName">Account holder name</label>
+                    <input
+                        id="accountName"
+                        type="text"
+                        maxlength="100"
+                        autocomplete="name"
+                        placeholder="Name on bank account"
+                        required
+                    >
+
+                    <label for="accountNumber">Account number</label>
+                    <input
+                        id="accountNumber"
+                        type="text"
+                        inputmode="numeric"
+                        autocomplete="off"
+                        pattern="[0-9]{10}"
+                        maxlength="10"
+                        placeholder="10-digit account number"
+                        required
+                    >
+
+                    <button class="btn btn-primary btn-full" type="submit">
+                        Prepare withdrawal request
+                    </button>
+                </form>
+
+                <p class="form-message" id="withdrawMessage" aria-live="polite"></p>
+            </section>
+
+        </div>
+
+        <aside class="side-column">
+
+            <section class="panel receive-panel">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">GET PAID</p>
+                        <h2>Receive bank transfers</h2>
+                    </div>
+                    <span class="panel-icon">⌁</span>
+                </div>
+
+                <p class="muted">
+                    A dedicated account can let you receive transfers directly
+                    from other Nigerian banks.
+                </p>
+
+                <div class="account-placeholder">
+                    <span class="placeholder-label">BANK NAME</span>
+                    <strong id="receiveBank">Not connected</strong>
+
+                    <span class="placeholder-label">ACCOUNT NUMBER</span>
+                    <strong id="receiveAccount">Not available yet</strong>
+
+                    <span class="placeholder-label">ACCOUNT NAME</span>
+                    <strong id="receiveName">Aura Source</strong>
+                </div>
+
+                <p class="small-note">
+                    Real account details will appear here after a supported
+                    virtual account is created by your payment provider.
+                    Do not transfer money to unverified details.
+                </p>
+
+                <button class="btn btn-secondary btn-full" id="refreshAccount" type="button">
+                    Check account setup
+                </button>
+
+                <p class="form-message" id="receiveMessage" aria-live="polite"></p>
+            </section>
+
+            <section class="panel security-panel">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">ACCOUNT SAFETY</p>
+                        <h2>Security</h2>
+                    </div>
+                    <span class="panel-icon">◇</span>
+                </div>
+
+                <ul class="security-list">
+                    <li>Payment verification before crediting funds</li>
+                    <li>Bank details handled through secure services</li>
+                    <li>Transaction records for deposits and withdrawals</li>
+                </ul>
+
+                <p class="small-note">
+                    These protections must be implemented in the backend
+                    before real payments are enabled.
+                </p>
+            </section>
+
+        </aside>
+    </section>
+
+    <section class="panel transactions-panel">
+        <div class="panel-heading transaction-heading">
+            <div>
+                <p class="eyebrow">ACTIVITY</p>
+                <h2>Transaction history</h2>
+            </div>
+
+            <select id="transactionFilter" aria-label="Filter transactions">
+                <option value="all">All transactions</option>
+                <option value="deposit">Deposits</option>
+                <option value="withdrawal">Withdrawals</option>
+            </select>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Transaction</th>
+                        <th>Reference</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="transactionList">
+                    <tr>
+                        <td colspan="5" class="empty-state">
+                            No transactions yet.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="small-note">
+            This initial version stores demonstration requests in this browser
+            only. They are not verified payments or permanent financial records.
+        </p>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <p>© 2026 Aura Source · Wallet</p>
+    <p>Payments will be enabled after secure integration.</p>
+</footer>
+
+</body>
+</html>
