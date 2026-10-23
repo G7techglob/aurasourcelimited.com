@@ -100,7 +100,7 @@ function createDemoRequest(type, amount, description) {
         type,
         amount,
         description,
-        status: "TEST ONLY",
+        status: " test",
         date: new Date().toISOString()
     };
 }
@@ -255,14 +255,14 @@ if (depositForm) {
         const amountInput = document.getElementById("depositAmount");
         const amount = Number(amountInput?.value);
 
-        if (!Number.isSafeInteger(amount) || amount < 100) {
-            showMessage(
-                depositMessage,
-                "Enter a test deposit of at least ₦100.",
-                "error"
-            );
-            return;
-        }
+       if (!Number.isSafeInteger(amount) || amount <= 0) {
+    showMessage(
+        withdrawMessage,
+        "Enter a valid withdrawal amount greater than zero.",
+        "error"
+    );
+    return;
+}
 
         if (amount > 100000000000) {
             showMessage(
